@@ -12,6 +12,10 @@ import java.util.List;
 @Service
 public class TauxTaxeISService {
 
+    public TauxTaxeIS findByMontant(double montant) {
+        return tauxTaxeISDao.findByMontant(montant);
+    }
+
     @Autowired
     private TauxTaxeISDao tauxTaxeISDao;
 
@@ -33,7 +37,7 @@ public class TauxTaxeISService {
     }
 
 
-        public double aplliquerTaux(double beneficeTotal) {
+      /*  public double aplliquerTaux(double beneficeTotal) {
             List<TauxTaxeIS> tauxTaxeISList = tauxTaxeISDao.findAll();
 
 
@@ -45,12 +49,42 @@ public class TauxTaxeISService {
                 }
             }
             return tauxTaxeIS.getPourcentage();
+        }*/
+
+
+        public void save(TauxTaxeIS tauxTaxeIS){
+            if (findByMontant(tauxTaxeIS.getMontant())==null){
+            tauxTaxeISDao.save(tauxTaxeIS);}
         }
 
-        public void save(TauxTaxeIS tauxTaxeIS) {
-            tauxTaxeISDao.save(tauxTaxeIS);
-        }
 
+       public double getPourcentage(double montant){
+        TauxTaxeIS tauxTaxeIS = null;
+        double pourcentage = 0.0 , beneficeMax = 0.0 , beneficeMin = 0.0 ;
+
+        if ( montant > 0 && montant <= 300000 ){
+          pourcentage = 0.1;
+          beneficeMax = 300000.0;
+          beneficeMin = 0.0;
+        }
+        if ( montant >= 300001 && montant < 1000000 ){
+            pourcentage = 0.2;
+            beneficeMax = 1000000.0;
+            beneficeMin = 300001.0;
+           }
+        if( montant > 1000000){
+            pourcentage = 0.31;
+
+            beneficeMin = 1000000.0;
+        }
+        tauxTaxeIS.setPourcentage(pourcentage);
+        tauxTaxeIS.setBeneficeMax(beneficeMax);
+        tauxTaxeIS.setBeneficeMin(beneficeMin);
+        tauxTaxeIS.setMontant(montant);
+
+        this.save(tauxTaxeIS);
+        return pourcentage;
+       }
 
 
     }

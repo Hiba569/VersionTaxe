@@ -12,6 +12,15 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v4/tauxTaxeIS")
 public class TauxTaxeISWS {
+   @GetMapping("/montant/{montant}")
+    public TauxTaxeIS findByMontant(double montant) {
+        return tauxTaxeISService.findByMontant(montant);
+    }
+    @PostMapping("/getPourcentage/montant/{montant}")
+    public double getPourcentage(double montant) {
+        return tauxTaxeISService.getPourcentage(montant);
+    }
+
     @Autowired
     private TauxTaxeISService tauxTaxeISService;
 
@@ -34,10 +43,10 @@ public class TauxTaxeISWS {
         return tauxTaxeISService.findAll();
     }
 
-    @GetMapping("/aplliquerTaux/beneficeTotal/{beneficeTotal}")
+   /* @GetMapping("/aplliquerTaux/beneficeTotal/{beneficeTotal}")
     public double aplliquerTaux(@PathVariable double beneficeTotal) {
         return tauxTaxeISService.aplliquerTaux(beneficeTotal);
-    }
+    }*/
 
     @PostMapping("/")
     public void save(@RequestBody TauxTaxeIS tauxTaxeIS) {

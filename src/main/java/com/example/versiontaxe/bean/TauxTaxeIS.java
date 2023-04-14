@@ -14,7 +14,7 @@ public class TauxTaxeIS {
     private Long id;
     private Date dateApplicationDebut;
     private Date dateApplicationFin;
-
+    private double montant;
     private double beneficeMax;
     private double beneficeMin;
 
@@ -48,7 +48,7 @@ public class TauxTaxeIS {
         return beneficeMax;
     }
 
-    public void setBeneficeMax(int beneficeMax) {
+    public void setBeneficeMax(double beneficeMax) {
         this.beneficeMax = beneficeMax;
     }
 
@@ -56,7 +56,7 @@ public class TauxTaxeIS {
         return beneficeMin;
     }
 
-    public void setBeneficeMin(int beneficeMin) {
+    public void setBeneficeMin(double beneficeMin) {
         this.beneficeMin = beneficeMin;
     }
 
@@ -68,7 +68,17 @@ public class TauxTaxeIS {
         this.pourcentage = pourcentage;
     }
 
+  
 
+
+
+    public double getMontant() {
+        return montant;
+    }
+
+    public void setMontant(double montant) {
+        this.montant = montant;
+    }
 }
 
 

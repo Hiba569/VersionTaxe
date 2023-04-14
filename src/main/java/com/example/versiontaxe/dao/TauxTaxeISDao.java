@@ -13,7 +13,7 @@ import java.util.List;
 public interface TauxTaxeISDao extends JpaRepository<TauxTaxeIS, Long> {
     TauxTaxeIS findByBeneficeMaxAndBeneficeMinAndDateApplicationDebut
             (double beneficeMax, double beneficeMin,Date dateApplicationDebut);
-
+    TauxTaxeIS findByMontant(double montant);
     List<TauxTaxeIS> findByDateApplicationDebutAndDateApplicationFin(double dateAppclicationDebut , double dateApplicationFin);
 
 

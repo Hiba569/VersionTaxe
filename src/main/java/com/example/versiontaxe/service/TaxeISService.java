@@ -52,7 +52,7 @@ public class TaxeISService {
         double benefice = totalFactureFournisseur - totalFactureClient;
         TaxeIS taxeIS = new TaxeIS();
 
-       double x= benefice * tauxTaxeISService.aplliquerTaux(benefice);
+       double x= benefice * tauxTaxeISService.getPourcentage(benefice);
         if (x < 3000) {
             taxeIS.setMontantIS(3000);// Return 30000Dh as tax amount
         }

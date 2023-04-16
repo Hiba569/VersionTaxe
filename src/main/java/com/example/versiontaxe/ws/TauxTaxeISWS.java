@@ -29,6 +29,7 @@ public class TauxTaxeISWS {
         return tauxTaxeISService.findByBeneficeMaxAndBeneficeMinAndDateApplicationDebut(beneficeMax, beneficeMin, dateApplicationDebut);
     }
 
+    @GetMapping("/dateAppDebut/{dateApplicationDebut}/dateAppFin/{dateApplicationFin}")
     public List<TauxTaxeIS> findByDateApplicationDebutAndDateApplicationFin(double dateApplicationDebut, double dateApplicationFin) {
         return tauxTaxeISService.findByDateApplicationDebutAndDateApplicationFin(dateApplicationDebut, dateApplicationFin);
     }
@@ -49,7 +50,7 @@ public class TauxTaxeISWS {
     }*/
 
     @PostMapping("/")
-    public void save(@RequestBody TauxTaxeIS tauxTaxeIS) {
-        tauxTaxeISService.save(tauxTaxeIS);
+    public int save(@RequestBody TauxTaxeIS tauxTaxeIS) {
+      return  tauxTaxeISService.save(tauxTaxeIS);
     }
 }

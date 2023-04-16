@@ -52,19 +52,23 @@ public class TauxTaxeISService {
         }*/
 
 
-        public void save(TauxTaxeIS tauxTaxeIS){
-            if (findByMontant(tauxTaxeIS.getMontant())==null){
-            tauxTaxeISDao.save(tauxTaxeIS);}
+    public int save(TauxTaxeIS tauxTaxeIS) {
+        if (findByMontant(tauxTaxeIS.getMontant()) != null) {
+            return -1;
+        } else {
+            tauxTaxeISDao.save(tauxTaxeIS);
+            return 1;
         }
+    }
 
 
-       public double getPourcentage(double montant){
+    public double getPourcentage(double montant) {
         TauxTaxeIS tauxTaxeIS = null;
-        double pourcentage = 0.0 , beneficeMax = 0.0 , beneficeMin = 0.0 ;
+        double pourcentage = 0.0, beneficeMax = 0.0, beneficeMin = 0.0;
 
-        if ( montant > 0 && montant <= 300000 ){
-          pourcentage = 0.1;
-          beneficeMax = 300000.0;
+        if (montant > 0 && montant <= 300000) {
+            pourcentage = 0.1;
+            beneficeMax = 300000.0;
           beneficeMin = 0.0;
         }
         if ( montant >= 300001 && montant < 1000000 ){

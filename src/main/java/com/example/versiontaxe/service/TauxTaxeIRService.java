@@ -1,5 +1,6 @@
 package com.example.versiontaxe.service;
 
+import com.example.versiontaxe.bean.Employer;
 import com.example.versiontaxe.bean.TauxTaxeIR;
 import com.example.versiontaxe.dao.TauxTaxeIRDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,6 +72,14 @@ public class TauxTaxeIRService {
         }
         tauxTaxeIR.setPourcentage(percentage);
         return percentage;
+    }
+    public int save (TauxTaxeIR tauxIR) {
+        if (tauxTaxeIRDao.findByTotalSalaireBrut(tauxIR.getTotalSalaireBrut()) != null)
+            return -1;
+        else {
+            tauxTaxeIRDao.save(tauxIR);
+            return 1;
+        }
     }
 
     public List<TauxTaxeIR> findAll() {

@@ -2,6 +2,7 @@ package com.example.versiontaxe.bean;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -13,10 +14,10 @@ public class TaxeIR {
     private int annee;
     private double montantIRTotal;
     private double nombreEmployerDeclare;
-//    @OneToMany
-//    private List<TauxTaxeIR> listTauxIR;
-//    @OneToMany
-//    private List<TaxeIRDetail> listIRdetail;
+    //@OneToMany
+     //private List<TauxTaxeIR> listTauxIR;
+    @OneToMany
+     private List<TaxeIRDetail> listIRdetail;
     @ManyToOne
     private Societe societe;
 

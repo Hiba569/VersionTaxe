@@ -18,7 +18,6 @@ public class TaxeIRService {
     public TaxeIR findBySocieteIceAndMoisAndAnnee(int ice, int mois, int annee) {
         return taxeIRDao.findBySocieteIceAndMoisAndAnnee(ice, mois, annee);
     }
-
     public List<TaxeIR> findAll() {
         return taxeIRDao.findAll();
     }

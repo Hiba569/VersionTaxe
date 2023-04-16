@@ -12,7 +12,6 @@ public class TauxTaxeIRWS {
     @Autowired
     private TauxTaxeIRService tauxTaxeIRService;
 
-
     @GetMapping("/salaireBrutMin/{salaireBrutMin}/salaireBrutMax/{salaireBrutMax}")
     public TauxTaxeIR findBysalaireBrutMinAndSalaireBrutMax(@PathVariable double salaireBrutMin, @PathVariable double salaireBrutMax) {
         return tauxTaxeIRService.findBySalaireBrutMinAndSalaireBrutMax(salaireBrutMin, salaireBrutMax);
@@ -24,7 +23,8 @@ public class TauxTaxeIRWS {
     public double pourcentageIR(@PathVariable int totalSalaireBrut) {
         return tauxTaxeIRService.pourcentageIR(totalSalaireBrut);
     }
-
-
-
+    @PostMapping("/")
+    public int save(@RequestBody TauxTaxeIR tauxIR) {
+        return tauxTaxeIRService.save(tauxIR);
+    }
 }
